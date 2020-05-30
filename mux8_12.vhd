@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:54:47 05/14/2020 
+-- Create Date:    12:59:22 05/30/2020 
 -- Design Name: 
--- Module Name:    and_4 - Behavioral 
+-- Module Name:    mux8_12 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,15 +29,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity and_4 is
-port(a,b,c,d:in std_logic; z:out std_logic);
-end and_4;
+entity mux8_12 is
+	port(	a,b,c,d,e,f,g,h: in std_logic_vector (11 downto 0);
+			s: in std_logic_vector(2 downto 0);
+			o: out std_logic_vector (11 downto 0)
+			);
+end mux8_12;
 
-architecture Behavioral of and_4 is
-signal x,y:std_logic;
+architecture Behavioral of mux8_12 is
+
 begin
-x <= a and b;
-y <= c and d;
-z <= x and y;
+
+
 end Behavioral;
 

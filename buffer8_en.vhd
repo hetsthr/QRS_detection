@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:54:47 05/14/2020 
+-- Create Date:    17:37:29 05/27/2020 
 -- Design Name: 
--- Module Name:    and_4 - Behavioral 
+-- Module Name:    buffer8_en - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,15 +29,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity and_4 is
-port(a,b,c,d:in std_logic; z:out std_logic);
-end and_4;
+entity buffer8_en is
+	port(x:in std_logic_vector(7 downto 0); en:in std_logic; y: out std_logic_vector(7 downto 0));
+end buffer8_en;
 
-architecture Behavioral of and_4 is
-signal x,y:std_logic;
+architecture Behavioral of buffer8_en is
+
 begin
-x <= a and b;
-y <= c and d;
-z <= x and y;
+	y(0) <= x(0) and en ;
+	y(1) <= x(1) and en ;
+	y(2) <= x(2) and en ;
+	y(3) <= x(3) and en ;
+	y(4) <= x(4) and en ;
+	y(5) <= x(5) and en ;
+	y(6) <= x(6) and en ;
+	y(7) <= x(7) and en ;
 end Behavioral;
 

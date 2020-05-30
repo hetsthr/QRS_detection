@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:54:47 05/14/2020 
+-- Create Date:    15:24:40 05/29/2020 
 -- Design Name: 
--- Module Name:    and_4 - Behavioral 
+-- Module Name:    mul_2 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,15 +29,23 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity and_4 is
-port(a,b,c,d:in std_logic; z:out std_logic);
-end and_4;
+entity mul_2 is
+	port(a,b:in std_logic_vector(1 downto 0); z:out std_logic_vector(3 downto 0));
+end mul_2;
 
-architecture Behavioral of and_4 is
-signal x,y:std_logic;
+architecture Behavioral of mul_2 is
+component and_1
+	port(x,y:in std_logic; z:out std_logic);
+end component;
+component half_adder
+	port(	a,b : in std_logic;
+			s,c : out std_logic
+			);
+end component;
 begin
-x <= a and b;
-y <= c and d;
-z <= x and y;
+
+	A1: and_1 port map(a(0),b(0),z(0));
+	A2: and_1 port map(a(1),b(1)
+
 end Behavioral;
 
