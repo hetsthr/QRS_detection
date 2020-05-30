@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:54:47 05/14/2020 
+-- Create Date:    14:26:13 05/13/2020 
 -- Design Name: 
--- Module Name:    and_4 - Behavioral 
+-- Module Name:    full_adder - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,21 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity and_4 is
-port(a,b,c,d:in std_logic; z:out std_logic);
-end and_4;
-
-architecture Behavioral of and_4 is
---signal x,y:std_logic;
+entity full_adder is
+	port(	a,b,c_in: in std_logic;
+			sum,c_out: out std_logic
+			);
+end full_adder;
+architecture Behavioral of full_adder is
+	signal s1,c1,c2: std_logic;
+	component half_adder
+		port(	a,b: in std_logic;
+				s,c: out std_logic
+				);
+	end component;
 begin
-z <= a and b and c and d;
+	HA1: half_adder port map(a,b,s1,c1);
+	HA2: half_adder port map(c_in,s1,sum,c2);
+	c_out <= c1 or c2;
 end Behavioral;
 

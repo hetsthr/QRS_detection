@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:54:47 05/14/2020 
+-- Create Date:    11:51:18 05/28/2020 
 -- Design Name: 
--- Module Name:    and_4 - Behavioral 
+-- Module Name:    decoder_2_4 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity and_4 is
-port(a,b,c,d:in std_logic; z:out std_logic);
-end and_4;
+entity decoder_2_4 is
+	port(	a: in std_logic_vector(1 downto 0);
+			en: in std_logic;
+			d_out: out std_logic_vector(3 downto 0)
+			);
+end decoder_2_4;
 
-architecture Behavioral of and_4 is
---signal x,y:std_logic;
+architecture Behavioral of decoder_2_4 is
 begin
-z <= a and b and c and d;
+	d_out(0) <= (not a(0)) and (not a(1)) and en;
+	d_out(1) <= a(0) and (not a(1)) and en;
+	d_out(2) <= (not a(0)) and a(1) and en;
+	d_out(3) <= a(0) and a(1) and en;
 end Behavioral;
 

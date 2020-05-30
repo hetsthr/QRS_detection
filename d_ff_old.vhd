@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:54:47 05/14/2020 
+-- Create Date:    13:14:25 05/30/2020 
 -- Design Name: 
--- Module Name:    and_4 - Behavioral 
+-- Module Name:    d_ff_old - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -28,14 +28,29 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- any Xilinx primitives in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
+entity d_ff_old is
+port(	D:IN STD_LOGIC;
+		CLK:IN STD_LOGIC; 
+		Q:OUT STD_LOGIC
+		); 
+end d_ff_old;
 
-entity and_4 is
-port(a,b,c,d:in std_logic; z:out std_logic);
-end and_4;
-
-architecture Behavioral of and_4 is
---signal x,y:std_logic;
-begin
-z <= a and b and c and d;
+architecture Behavioral of d_ff_old is
+component nand_1
+	port (x,y:in std_logic; z:out std_logic);
+end component;
+component not_1
+	port (x:in std_logic; y:out std_logic);
+end component;
+component buffer_1
+	port (x:in std_logic; y:out std_logic);
+end  component;
+signal a,b,c,q1,q2:std_logic;
+begin	
+		NA1: nand_1 port map(D,CLK,a);
+		N1 : not_1 port map(D,b);		
+		NA2: nand_1 port map(b,CLK,c);
+		NA3: nand_1 port map(a,q2,q1);
+		NA4: nand_1 port map(c,q1,q2);
+		Q <= q1;
 end Behavioral;
-

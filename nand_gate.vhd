@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:54:47 05/14/2020 
+-- Create Date:    19:29:38 05/07/2020 
 -- Design Name: 
--- Module Name:    and_4 - Behavioral 
+-- Module Name:    nand_gate - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity and_4 is
-port(a,b,c,d:in std_logic; z:out std_logic);
-end and_4;
+entity nand_gate is
+port(
+	a,b : in std_logic;
+	c : out std_logic
+	);
+end nand_gate;
 
-architecture Behavioral of and_4 is
---signal x,y:std_logic;
+architecture Behavioral of nand_gate is
 begin
-z <= a and b and c and d;
+c <= a nand b;
 end Behavioral;
 

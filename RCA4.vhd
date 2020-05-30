@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:54:47 05/14/2020 
+-- Create Date:    14:30:31 05/13/2020 
 -- Design Name: 
--- Module Name:    and_4 - Behavioral 
+-- Module Name:    RCA4 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,28 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity and_4 is
-port(a,b,c,d:in std_logic; z:out std_logic);
-end and_4;
+entity RCA4 is
+	port(	a,b: in std_logic_vector (3 downto 0);
+			sum: out std_logic_vector (3 downto 0);
+			c_out: out std_logic
+			);
+end RCA4;
 
-architecture Behavioral of and_4 is
---signal x,y:std_logic;
+architecture Behavioral of RCA4 is
+	signal c1,c2,c3: std_logic;
+	component full_adder
+		port(	a,b,c_in: in std_logic;
+				sum,c_out: out std_logic
+				);
+	end component;
+	component half_adder
+		port(	a,b : in std_logic;
+			s,c : out std_logic
+			);
+	end component;
 begin
-z <= a and b and c and d;
+	HA1: half_adder port map(a(0),b(0),sum(0),c1);
+	FA1: full_adder port map(a(1),b(1),c1,sum(1),c2);
+	FA2: full_adder port map(a(2),b(2),c2,sum(2),c3);
+	FA3: full_adder port map(a(3),b(3),c3,sum(3),c_out);
 end Behavioral;
-
