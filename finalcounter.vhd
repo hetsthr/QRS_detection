@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:03:25 05/30/2020 
+-- Create Date:    13:05:10 05/19/2020 
 -- Design Name: 
--- Module Name:    not_12 - Behavioral 
+-- Module Name:    finalcounter - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,28 +29,29 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity not_12 is
-port(x:in std_logic_vector(11 downto 0); y:out std_logic_vector(11 downto 0));
-end not_12;
+entity finalcounter is
+port(clk,clear,preset:in std_logic;
+q0,q1,q2:out std_logic);
+end finalcounter;
 
-architecture Behavioral of not_12 is
-component not_1
-port (x:in std_logic; y:out std_logic);
+architecture Behavioral of finalcounter is
+component JKflipflop is
+port(j,k,clk,clear_bar,preset_bar:in std_logic;
+q:out std_logic);
+
 end component;
+component andmodule is
+port(in1,in2: in std_logic;
+out1: out std_logic);
+end component;
+signal temp1,temp2,temp3,temp4:std_logic;
 begin
-
-	N1: not_1 port map(x(0),y(0));
-	N2: not_1 port map(x(1),y(1));
-	N3: not_1 port map(x(2),y(2));
-	N4: not_1 port map(x(3),y(3));
-	N5: not_1 port map(x(4),y(4));
-	N6: not_1 port map(x(5),y(5));
-	N7: not_1 port map(x(6),y(6));
-	N8: not_1 port map(x(7),y(7));
-	N9: not_1 port map(x(8),y(8));
-	N10: not_1 port map(x(9),y(9));
-	N11: not_1 port map(x(10),y(10));
-	N12: not_1 port map(x(11),y(11));
-
+D1: JKflipflop port map('1','1',clk,clear,preset,temp1);
+D2: JKflipflop port map(temp1,temp1,clk,clear,preset,temp2);
+D4: andmodule port map(temp1,temp2,temp3);
+D3: JKflipflop port map(temp3,temp3,clear,preset,temp4);
+q0<=temp1;
+q1<=temp2;
+q2<=temp4;
 end Behavioral;
 

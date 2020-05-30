@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:03:25 05/30/2020 
+-- Create Date:    16:59:14 05/30/2020 
 -- Design Name: 
--- Module Name:    not_12 - Behavioral 
+-- Module Name:    or_12 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,28 +29,31 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity not_12 is
-port(x:in std_logic_vector(11 downto 0); y:out std_logic_vector(11 downto 0));
-end not_12;
+entity or_12 is
+port(a,b:in std_logic_vector(11 downto 0);
+out1:out std_logic_vector(11 downto 0));
+end or_12;
 
-architecture Behavioral of not_12 is
-component not_1
-port (x:in std_logic; y:out std_logic);
+architecture Behavioral of or_12 is
+component or_1 is
+port(a,b:in std_logic; out1:out std_logic);
 end component;
+signal p:std_logic_vector(11 downto 0);
 begin
+a1:or_1 port map(a(0),b(0),p(0));
+a2:or_1 port map(a(1),b(1),p(1));
+a3:or_1 port map(a(2),b(2),p(2));
+a4:or_1 port map(a(3),b(3),p(3));
+a5:or_1 port map(a(4),b(4),p(4));
+a6:or_1 port map(a(5),b(5),p(5));
+a7:or_1 port map(a(6),b(6),p(6));
+a8:or_1 port map(a(7),b(7),p(7));
+a9:or_1 port map(a(8),b(8),p(8));
+a10:or_1 port map(a(9),b(9),p(9));
+a11:or_1 port map(a(10),b(10),p(10));
+a12:or_1 port map(a(11),b(11),p(11));
+out1<=p;
 
-	N1: not_1 port map(x(0),y(0));
-	N2: not_1 port map(x(1),y(1));
-	N3: not_1 port map(x(2),y(2));
-	N4: not_1 port map(x(3),y(3));
-	N5: not_1 port map(x(4),y(4));
-	N6: not_1 port map(x(5),y(5));
-	N7: not_1 port map(x(6),y(6));
-	N8: not_1 port map(x(7),y(7));
-	N9: not_1 port map(x(8),y(8));
-	N10: not_1 port map(x(9),y(9));
-	N11: not_1 port map(x(10),y(10));
-	N12: not_1 port map(x(11),y(11));
 
 end Behavioral;
 

@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:02:17 05/30/2020 
+-- Create Date:    20:18:32 05/13/2020 
 -- Design Name: 
--- Module Name:    not_1 - Behavioral 
+-- Module Name:    halfadder - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity not_1 is
-port (x:in std_logic; y:out std_logic);
-end not_1;
+entity halfadder is
+port(a,b:in STD_LOGIC;
+sum,carry:out STD_LOGIC);
+end halfadder;
 
-architecture Behavioral of not_1 is
+architecture Behavioral of halfadder is
+
 begin
-	y <= not x;
+carry<= a and b;
+sum<= a xor b;
 end Behavioral;
-
 

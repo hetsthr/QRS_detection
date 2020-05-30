@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:02:17 05/30/2020 
+-- Create Date:    13:11:33 05/13/2020 
 -- Design Name: 
--- Module Name:    not_1 - Behavioral 
+-- Module Name:    dflipflop - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity not_1 is
-port (x:in std_logic; y:out std_logic);
-end not_1;
+entity dflipflop is
+port(d,clk:in std_logic;
+q,qbar:inout std_logic);
+end dflipflop;
 
-architecture Behavioral of not_1 is
+architecture Behavioral of dflipflop is
+signal temp1,temp2,temp3:std_logic;
+
 begin
-	y <= not x;
+temp1<=not(d);
+temp2<=not (d and clk);
+temp3<=not (temp1 and clk);
+q<=not (temp2 and qbar);
+qbar<=not (temp3 and q);
 end Behavioral;
-
 

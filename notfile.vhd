@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:02:17 05/30/2020 
+-- Create Date:    20:47:33 05/19/2020 
 -- Design Name: 
--- Module Name:    not_1 - Behavioral 
+-- Module Name:    notfile - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity not_1 is
-port (x:in std_logic; y:out std_logic);
-end not_1;
+entity notfile is
+port(in1:in std_logic;
+out1:out std_logic);
+end notfile;
 
-architecture Behavioral of not_1 is
+architecture Behavioral of notfile is
+
 begin
-	y <= not x;
-end Behavioral;
+out1<=not(in1);
 
+end Behavioral;
 

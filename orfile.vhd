@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:02:17 05/30/2020 
+-- Create Date:    20:45:36 05/19/2020 
 -- Design Name: 
--- Module Name:    not_1 - Behavioral 
+-- Module Name:    orfile - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity not_1 is
-port (x:in std_logic; y:out std_logic);
-end not_1;
+entity orfile is
+port(in1,in2:in std_logic;
+out1:out std_logic);
+end orfile;
 
-architecture Behavioral of not_1 is
+architecture Behavioral of orfile is
+
 begin
-	y <= not x;
-end Behavioral;
+out1<=in1 or in2;
 
+end Behavioral;
 

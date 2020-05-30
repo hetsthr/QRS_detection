@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    17:02:17 05/30/2020 
+-- Create Date:    16:16:55 05/30/2020 
 -- Design Name: 
--- Module Name:    not_1 - Behavioral 
+-- Module Name:    anding - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,13 +29,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity not_1 is
-port (x:in std_logic; y:out std_logic);
-end not_1;
+entity anding is
+port(x,y:in std_logic;
+z:out std_logic);
+end anding;
 
-architecture Behavioral of not_1 is
+architecture Behavioral of anding is
+
 begin
-	y <= not x;
-end Behavioral;
 
+z<=x and y;
+end Behavioral;
 
